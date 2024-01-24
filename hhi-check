@@ -1,0 +1,18 @@
+#!/bin/bash
+clear
+echo -e "\033[32;1m========================================================="
+figlet hhi-check
+echo -e "========================================================="
+echo -e "\033[32;1mHost\033[33;1mHeader\033[34;1mInjection\033[35;1mChecker \033[0mby \033[32;1mpaktiko1986\033[0m"
+echo -e "\033[32;1m========================================================="
+echo "[+] Target(s): " $1
+echo "[+] Payloads: "
+echo "    >> Host: google.com"
+echo "    >> X-Forwarded-Host: google.com"
+echo "    >> Content-Length: 0"
+echo "    >> User-Agent: paktiko1986/hh1"
+echo "========================================================="
+echo -e "=========================================================\033[0m"
+
+echo -e "\033[32;1m$(curl $1 -skLI -H "Host: google.com" -H "X-Forwarded-Host: google.com" -H "Content-Length: 0" -A "User-Agent: paktiko1986/hh1")" #| grep "Location: https://google.com"
+echo -e "=========================================================\033[0m"

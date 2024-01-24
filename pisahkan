@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat $1 | httpx-toolkit -mc 200 | anew 2xx && cat $1 | httpx-toolkit -mc 301,302 | anew 3xx
