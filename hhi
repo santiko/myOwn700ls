@@ -18,7 +18,7 @@ if [[ ! $1 == "--d" && $2 == "" ]]; then
 else
 	for url in $(cat $2); do curl --max-time 9 -skLI -H "Host: google.com" -H "X-Forwarded-Host: google.com" -H "Content-Length:0" -A "User-Agent: SKH86" $url | grep -q "domain=.google.com" && echo -e "\033[31;1m[-] $url is VULN\033[0m" >> hhi_vulns.txt || echo -e "\033[32m[+] $url is WELL\033[0m";  done
 fi
-#cat hhi_vulns.txt | awk -F'//' '{print $2}' | awk -F' ' '{print $1}' > ssrf_target_vulns.txt
+cat hhi_vulns.txt | awk -F"//" '{print $2}' | awk -F" " '{print $1}' | tee -a originUrl; cat originUrl | xargs getent hosts | sort -u | tee -a iplooks
 echo ""
 echo -e "\033[32;1m==========================================================\033[0m"
 cat hhi_vulns.txt
