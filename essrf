@@ -11,6 +11,8 @@ echo "    >> Host: $3"
 echo "    >> X-Forwarded-Host: $3"
 echo "    >> Token: $4"
 echo "    >> Content-Length: 0"
+echo "    >> X-Bug-Bounty: HackerOne-0x071c0"
+echo "    >> X-BugCrowdNinja: SantikoKusnulHakim"
 echo -e "=====================================\033[0m"
 touch ssrf_vulns.txt
 if [[ ! $1 == "--d" && $2 == "" ]]; then
