@@ -1,0 +1,13 @@
+#!/bin/bash
+figlet CRLFtester
+echo ""
+# urls
+while read line
+do
+	for url in $(cat $1)
+	do 
+		curl -skLI "$url$line" -o /dev/null -w "$url | $line | %{http_code}\n"
+	done
+done < /payloads/PayloadsAllTheThings/crlfs/crlfinjection.txt
+
+#/payloads/PayloadsAllTheThings/crlfs/crlfinjection.txt
